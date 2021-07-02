@@ -1,9 +1,8 @@
-import "./App.css";
+import "./Resto.css";
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Resto from "./Restaurants/Resto";
 
-function App() {
+function Resto() {
   const [data, setData] = useState();
 
   const DisplayDate = (UTCDateTime) => {
@@ -31,12 +30,11 @@ function App() {
     <div className="w-100  container-bg ">
       <div className="row w-100 justify-content-center ">
         <h2 className="my-5 text-center fw-bold">
-          Événements Brésilien Paris ...
+          Les Resto Brésiliens Paris ...soon
         </h2>
-        <h6> ...soon with new features</h6>
         <div className="w-100  "></div>
 
-        {events &&
+        {/* {events &&
           events.map((item, index) => (
             <div
               key={index}
@@ -60,13 +58,12 @@ function App() {
 
               <button className="btn-events">
                 <a href={item.url}>Link Event</a>
-              </button>
-            </div>
-          ))}
+              </button> */}
       </div>
-      <Resto />
+      {/* ))} */}
     </div>
+    // </div>
   );
 }
 
-export default App;
+export default Resto;

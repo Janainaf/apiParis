@@ -1,9 +1,8 @@
-import "./App.css";
+import "./Events.css";
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Resto from "./Restaurants/Resto";
 
-function App() {
+function Events() {
   const [data, setData] = useState();
 
   const DisplayDate = (UTCDateTime) => {
@@ -64,9 +63,8 @@ function App() {
             </div>
           ))}
       </div>
-      <Resto />
     </div>
   );
 }
 
-export default App;
+export default Events;
