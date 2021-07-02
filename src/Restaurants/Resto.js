@@ -5,15 +5,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function Resto() {
   const [data, setData] = useState();
 
-  const DisplayDate = (UTCDateTime) => {
-    var date = new Date(UTCDateTime);
-    var day = date.getDate();
-    var month = date.getMonth() + 1;
-    var year = date.getFullYear();
-    var formattedDate = day + "-" + month + "-" + year;
-    return formattedDate;
-  };
-
   useEffect(() => {
     fetch(
       `https://opendata.paris.fr/api/records/1.0/search/?dataset=que-faire-a-paris-&q=br%C3%A9sil&facet=category&facet=tags&facet=address_name&facet=address_zipcode&facet=address_city&facet=pmr&facet=blind&facet=deaf&facet=access_type&facet=price_type`
@@ -23,8 +14,6 @@ function Resto() {
         setData(data);
       });
   }, []);
-
-  const events = data && data.records.map((record) => record.fields);
 
   return (
     <div className="w-100  container-bg ">

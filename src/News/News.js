@@ -1,43 +1,32 @@
-import "./App.css";
+import "./News.css";
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Resto from "./Restaurants/Resto";
-import News from "./News/News";
 
-function App() {
+function News() {
   const [data, setData] = useState();
-
-  const DisplayDate = (UTCDateTime) => {
-    var date = new Date(UTCDateTime);
-    var day = date.getDate();
-    var month = date.getMonth() + 1;
-    var year = date.getFullYear();
-    var formattedDate = day + "-" + month + "-" + year;
-    return formattedDate;
-  };
 
   useEffect(() => {
     fetch(
-      `https://opendata.paris.fr/api/records/1.0/search/?dataset=que-faire-a-paris-&q=br%C3%A9sil&facet=category&facet=tags&facet=address_name&facet=address_zipcode&facet=address_city&facet=pmr&facet=blind&facet=deaf&facet=access_type&facet=price_type`
+      `https://api.qwant.com/api/search/web?count=10&offset=0&q=fran%C3%A7a+uol&t=news&uiv=1`
     )
       .then((response) => response.json())
       .then((data) => {
+        data = data.result;
         setData(data);
       });
   }, []);
 
-  const events = data && data.records.map((record) => record.fields);
+  const events = data && data.items.map((record) => record.items);
 
   return (
     <div className="w-100  container-bg ">
       <div className="row w-100 justify-content-center ">
         <h2 className="my-5 text-center fw-bold">
-          Événements Brésilien Paris ...
+          Les Nouvelles de la France ...soon
         </h2>
-        <h6> ...soon with new features</h6>
         <div className="w-100  "></div>
 
-        {events &&
+        {/* {events &&
           events.map((item, index) => (
             <div
               key={index}
@@ -63,13 +52,10 @@ function App() {
                 <a href={item.url}>Link Event</a>
               </button>
             </div>
-          ))}
+          ))} */}
       </div>
-      <News />
-
-      <Resto />
     </div>
   );
 }
 
-export default App;
+export default News;
