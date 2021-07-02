@@ -16,7 +16,7 @@ function App() {
 
   useEffect(() => {
     fetch(
-      `https://opendata.paris.fr/api/v2/catalog/datasets/que-faire-a-paris-/records?rows=10`
+      `https://opendata.paris.fr/api/records/1.0/search/?dataset=que-faire-a-paris-&q=br%C3%A9sil&facet=category&facet=tags&facet=address_name&facet=address_zipcode&facet=address_city&facet=pmr&facet=blind&facet=deaf&facet=access_type&facet=price_type`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -24,7 +24,7 @@ function App() {
       });
   }, []);
 
-  const events = data && data.records.map((record) => record.record.fields);
+  const events = data && data.records.map((record) => record.fields);
 
   return (
     <div className="w-100  container-bg ">
